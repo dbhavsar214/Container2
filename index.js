@@ -16,6 +16,7 @@ if (!fs.existsSync(FILE_DIRECTORY)) {
 }
 
 app.post('/calculate', (req, res) => {
+  console.log("res", res);
   const { file, product } = req.body;
 
   if (!file) {
@@ -41,11 +42,11 @@ app.post('/calculate', (req, res) => {
     .on('error', (err) => {
       isValidCSV = false;
       console.error(err);
-      res.status(400).json({ file, error: 'Input file not in CSV format.' });
+      res.status(400).json({ "file": file, "error": "Input file not in CSV format." });
     })
     .on('end', () => {
       if (isValidCSV) {
-        res.json({ file, sum });
+        res.json({ "file": file, "sum": sum });
       }
     });
 });

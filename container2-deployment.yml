@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: container2
-        image: divy214/cor2:latest
+        image: divy214/acon2:latest
         ports:
         - containerPort: 6001
         env:
