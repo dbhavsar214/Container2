@@ -10,7 +10,7 @@ app.use(express.json());
 const PORT = Number(process.env.PORT) || 6001;
 const FILE_DIRECTORY = process.env.FILE_DIRECTORY || '/divy_PV_dir';
 
-// Ensure the directory exists
+
 if (!fs.existsSync(FILE_DIRECTORY)) {
   fs.mkdirSync(FILE_DIRECTORY, { recursive: true });
 }
@@ -31,7 +31,7 @@ app.post('/calculate', (req, res) => {
 
   let sum = 0;
   let isValidCSV = true;
-  
+
   fs.createReadStream(filePath)
     .pipe(csv())
     .on('data', (row) => {
