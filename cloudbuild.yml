@@ -29,4 +29,4 @@ steps:
       - '-c'
       - |
         kubectl get deployment/container2-deployment || kubectl apply -f container2-deployment.yml
-        kubectl set image deployment/container2-deployment container2=us-central1-docker.pkg.dev/assi-427619/k8s-test/acon2:latest
+        kubectl set image deployment/container2-deployment container2=us-central1-docker.pkg.dev/assi-427619/k8s-test/acon2:${SHORT_SHA}
