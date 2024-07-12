@@ -10,10 +10,10 @@ steps:
 
   # Build and push container2 for your project
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/assi-427619/a3-artifact/dbhavsar214-container2/acon2:latest', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/assi-427619/a3-artifact/dbhavsar214-container2/acon2:${SHORT_SHA}', '.']
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/assi-427619/a3-artifact/dbhavsar214-container2/acon2:latest']
+    args: ['push', 'us-central1-docker.pkg.dev/assi-427619/a3-artifact/dbhavsar214-container2/acon2:${SHORT_SHA}']
 
   # Get credentials for your project's cluster and deploy container2
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:latest'
@@ -29,4 +29,4 @@ steps:
       - '-c'
       - |
         kubectl get deployment/container2-deployment || kubectl apply -f container2-deployment.yml
-        kubectl set image deployment/container2-deployment container2=us-central1-docker.pkg.dev/assi-427619/a3-artifact/dbhavsar214-container1/a3container1:${SHORT_SHA}
+        kubectl set image deployment/container2-deployment container2=us-central1-docker.pkg.dev/assi-427619/a3-artifact/dbhavsar214-container2/acon2:${SHORT_SHA}
